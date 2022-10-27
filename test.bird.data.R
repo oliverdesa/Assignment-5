@@ -16,6 +16,13 @@ if (length(args != 1)){
   cat('Please input a numeric argument')
   stop()
 } else {
+  cat('There are', args, 'datapoints included in each batch of measured birds',
+      '\n')
+  args <- as.numeric(args)
+  
+  #C
+  my.data <- rtri(args, 0.5 * pi, 1.5 * pi, mode = pi)
+  
   
 }
 
