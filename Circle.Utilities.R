@@ -21,10 +21,6 @@ max.angular.diff<- function(angles) {
   return(max(angle_diff))
 }
 
-# Function simulates the distribution under the null hypothesis, taking k samples
-# n number of times and then taking the max angular difference out of each sample
-# returning a vector of n max angular differences.
-
 sim.null.hypo <- function(k, n) {
   samples <- rep(0, n)
   for (sample in 1:length(samples)){
@@ -32,35 +28,6 @@ sim.null.hypo <- function(k, n) {
   }
   sample.angle.diffs <- sapply(samples, max.angular.diff)
   return(sample.angle.diffs)
-}
-
-# Function takes a vector of n max angular differences and 
-
-calc.cdf <- function(sample.max.diffs){
-  p.dist <- hist(sample.max.diffs, breaks = 41, plot=FALSE)
-  breaks <- p.dist$breaks
-  density <- p.dist$density
-  Cumulative.Data <- rep(0, length(breaks))
-  for (rep in 1:length(Cumulative.Data)){
-    if (rep > 1){
-      Cumulative.Data[rep] <- density[rep]*(breaks[rep+1] - breaks[rep])
-      
-    } else if (rep == 1) {
-      next
-    }
-  }
-  Cumulative.Data <- cumsum(Cumulative.Data)
-  cumulative.df <- data.frame(breaks, Cumulative.Data) 
-  return(cumulative.df)
-}
-
-# Function takes the previous dataframe including break and cumulative data columns,
-# then searches for the bin including n and returns the respective CDF
-
-calc.cumulative <- function(dataframe, n){
-  greater.than.n <- dataframe[dataframe$breaks > n, ]
-  P.value <- greater.than.n$Cumulative.Data[1]
-  return(P.value)
 }
 
 
