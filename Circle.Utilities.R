@@ -31,6 +31,25 @@ sim.null.hypo <- function(k, n) {
 }
 
 
+calc.cdf <- function(sample.max.diffs){
+  p.dist <- hist(sample.max.diffs, breaks = 41, plot=FALSE)
+  breaks <- p.dist$breaks
+  density <- p.dist$density
+  Cumulative.Data <- rep(0, length(breaks))
+  for (rep in 1:length(Cumulative.Data)){
+    if (rep > 1){
+      Cumulative.Data[rep] <- density[rep]*(breaks[rep+1] - breaks[rep])
+      
+    } else if (rep == 1) {
+      next
+    }
+  }
+  Cumulative.Data <- cumsum(Cumulative.Data)
+  cumulative.df <- data.frame(breaks, Cumulative.Data) 
+  return(cumulative.df)
+}
+
+
 
 
 
