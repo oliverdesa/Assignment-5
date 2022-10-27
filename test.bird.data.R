@@ -29,7 +29,15 @@ if (length(args != 1)){
   # E
   Cumulative.DF <- calc.cdf(Null.Samples)
   
+  # F
+  test.max <- max.angular.diff(my.data)
+  P.value <- calc.cumulative(Cumulative.DF, test.max)
   
+  if (P.value >= 0.95){
+    cat('This test is significant with a p value of', 1 - P.value)
+  } else if (P.value < 0.95){
+    cat('This test is insignificant with a p value of', 1 - P.value)
+  }
 }
 
 
