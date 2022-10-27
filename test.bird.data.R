@@ -23,6 +23,12 @@ if (length(args != 1)){
   #C
   my.data <- rtri(args, 0.5 * pi, 1.5 * pi, mode = pi)
   
+  # D
+  Null.Samples <- sim.null.hypo(args, 10000)
+  
+  # E
+  Cumulative.DF <- calc.cdf(Null.Samples)
+  
   
 }
 
