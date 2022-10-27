@@ -6,7 +6,8 @@
 
 
 # Function takes a vector of angles, sorts the vector into increasing order
-# then takes the difference of (angle n+1 - angle n), returning this value as a vector
+# then takes the difference of (angle n+1 - angle n), returning these values as 
+# a vector
 
 max.angular.diff<- function(angles) {
   sorted.angles <- sort(angles, decreasing = FALSE)
@@ -59,8 +60,8 @@ calc.cdf <- function(sample.max.diffs){
 
 calc.cumulative <- function(dataframe, n){
   greater.than.n <- dataframe[dataframe$breaks > n, ]
-  P.value <- greater.than.n$Cumulative.Data[1]
-  return(P.value)
+  reverse.pvalue <- greater.than.n$Cumulative.Data[1]
+  return(reverse.pvalue)
 }
 
 
