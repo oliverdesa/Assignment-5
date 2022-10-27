@@ -21,6 +21,9 @@ max.angular.diff<- function(angles) {
   return(max(angle_diff))
 }
 
+# Function takes a sample size (k) and number of samples (n) and returns a  
+# distribution of max angles from those samples
+
 sim.null.hypo <- function(k, n) {
   samples <- rep(0, n)
   for (sample in 1:length(samples)){
@@ -30,6 +33,8 @@ sim.null.hypo <- function(k, n) {
   return(sample.angle.diffs)
 }
 
+# function takes a vector of max angle diffs and returns a dataframe including
+# each break along with the respective cumulative distribution value
 
 calc.cdf <- function(sample.max.diffs){
   p.dist <- hist(sample.max.diffs, breaks = 41, plot=FALSE)
@@ -48,6 +53,9 @@ calc.cdf <- function(sample.max.diffs){
   cumulative.df <- data.frame(breaks, Cumulative.Data) 
   return(cumulative.df)
 }
+
+# Function takes a dataframe and a number (n) and returns the associated cumulative
+# distribution value associated with the bin including n
 
 calc.cumulative <- function(dataframe, n){
   greater.than.n <- dataframe[dataframe$breaks > n, ]
