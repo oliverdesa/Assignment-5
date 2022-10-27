@@ -9,11 +9,11 @@ library(EnvStats)
 
 args <- commandArgs(trailingOnly = TRUE)
 
-if (length(args != 1)){
-  cat('Please input only 1 argument')
+if (length(args) != 1){
+  cat('Please input only 1 argument', '\n')
   stop()
 } else if (is.na(as.numeric(args))){
-  cat('Please input a numeric argument')
+  cat('Please input a numeric argument', '\n')
   stop()
 } else {
   cat('There are', args, 'datapoints included in each batch of measured birds',
