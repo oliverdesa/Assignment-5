@@ -49,7 +49,11 @@ calc.cdf <- function(sample.max.diffs){
   return(cumulative.df)
 }
 
-
+calc.cumulative <- function(dataframe, n){
+  greater.than.n <- dataframe[dataframe$breaks > n, ]
+  P.value <- greater.than.n$Cumulative.Data[1]
+  return(P.value)
+}
 
 
 
